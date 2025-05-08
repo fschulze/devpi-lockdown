@@ -30,7 +30,7 @@ jobs:
           ls -la /var
           ls -la /var/lib
           ls -la /var/lib/nginx
-          chmod +orx /var/lib/nginx/*
+          chmod o+rx /var/lib/nginx/*
           ls -la /var/lib/nginx/body
           # python -VV
           # python -m site
