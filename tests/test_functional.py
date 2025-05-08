@@ -56,7 +56,7 @@ def test_devpi_test(capfd, create_venv, devpi, initproj, monkeypatch):
     venvdir = create_venv()
     monkeypatch.setenv("VIRTUAL_ENV", venvdir.strpath)
     monkeypatch.setenv("PIP_VERBOSE", "3")
-    devpi("test", "foo", "--tox-args=-vvv")
+    devpi("test", "foo")
     (out, err) = capfd.readouterr()
     (line,) = [
         x for x in out.splitlines()
