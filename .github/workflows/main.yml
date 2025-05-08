@@ -27,6 +27,8 @@ jobs:
       - name: "Install dependencies"
         run: |
           set -xe -o nounset
+          nginx -V
+          nginx -T
           python -VV
           python -m site
           python -m pip install --upgrade pip setuptools wheel
