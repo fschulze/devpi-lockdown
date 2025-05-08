@@ -27,21 +27,16 @@ jobs:
       - name: "Install dependencies"
         run: |
           set -xe -o nounset
-          ls -la /var
-          ls -la /var/lib
-          ls -la /var/lib/nginx
-          chmod o+rx /var/lib/nginx/*
-          ls -la /var/lib/nginx/body
-          # python -VV
-          # python -m site
-          # python -m pip install --upgrade pip setuptools wheel
-          # python -m pip install --upgrade virtualenv tox
+          python -VV
+          python -m site
+          python -m pip install --upgrade pip setuptools wheel
+          python -m pip install --upgrade virtualenv tox
 
       - name: "Run tox targets for ${{ matrix.python-version }} (${{ matrix.tox-envs }})"
         run: |
           set -xe -o nounset
-          # python -m tox -a -vv
-          # python -m tox -v -e ${{ matrix.tox-envs }} -- -v --color=yes
+          python -m tox -a -vv
+          python -m tox -v -e ${{ matrix.tox-envs }} -- -v --color=yes
 
   flake8:
     env:
