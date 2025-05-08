@@ -55,11 +55,13 @@ def test_devpi_test(capfd, create_venv, devpi, initproj, monkeypatch):
     assert "file_upload of foo" in out
     venvdir = create_venv()
     monkeypatch.setenv("VIRTUAL_ENV", venvdir.strpath)
-    devpi("test", "foo")
+    monkeypatch.setenv("PIP_VERBOSE", "3")
+    devpi("test", "foo", "--tox-args=-vvv")
     (out, err) = capfd.readouterr()
     (line,) = [
         x for x in out.splitlines()
         if 'install_deps' in x or 'installdeps' in x]
     assert "bar==1.0" in line
+    print(out)
     assert "commands succeeded" in out or "congratulations :)" in out
     assert "success" in out
